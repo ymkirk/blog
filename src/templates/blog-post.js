@@ -5,16 +5,18 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { INLINES, BLOCKS } from "@contentful/rich-text-react-types"
 
 export const data = graphql`
-    query($slug: String!)
+    query($slug: String!) {
         contentfulBlog(slug: {eq: $slug}) {
             author
-            publishedDate(fromNow: ture)
+            publishedDate(fromNow: true)
             slug
             title
             body {
                 json
             }
         }
+    }
+    
 `
 
 const BlogPost = (props) => {
@@ -39,6 +41,10 @@ const BlogPost = (props) => {
                 <h2>{props.data.contentfulBlog.title}</h2>
                 <p style={{fontWeight: 200, fontSize: "0.8rem"}}>Published {props.data.contentfulBlog.publishedDate}</p>
                 <p style={{fontWeight: 300, fontSize: "0.9rem"}}>Written By {props.data.contentfulBlog.author}</p>
+                {
+                    documentToReactComponents(props.data.contentfulBlog.body.json, options)
+                }
+                <Link to="/blog">Back to Blog</Link>
             </div>
         </Layout>
     )

@@ -1,14 +1,13 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Blog from "../pages/blog"
-import Posts from "../pages/posts"
+
 import headerStyles from "../components/header.module.css"
 
 const Header = ({ siteTitle, siteDescription, blog, posts }) => (
   <header
     style={{
-      background: `rgba(0,35,50,0.5)`,
+      background: `black`,
       marginBottom: `1.45rem`,
     }}
   >

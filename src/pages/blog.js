@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react"
 
 const Blog = () => {
 
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout, /*user*/ } = useAuth0()
 
   const data = useStaticQuery(graphql`
   {
